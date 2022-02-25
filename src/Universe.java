@@ -31,6 +31,25 @@ public class Universe {
         }
     }
 
+    public Universe(int numBodies){
+        this.numBodies= numBodies;
+        this.radius = 2e11;
+        this.bodies = new Body[numBodies];
+        for (int i=0; i < numBodies; i++) {
+            //random formula: a + Math.random()*(b-a)
+            double rx = -1e11 + Math.random()*(1e11-(-1e11));
+            double ry = -1e11 + Math.random()*(1e11-(-1e11));
+            double vx = -1.2e04 + Math.random()*(1.2e04-(-1.2e04));
+            double vy = -1.2e04 + Math.random()*(1.2e04-(-1.2e04));
+            double mass = 2e27 + Math.random()*(2e28-2e27);
+            double[] position = {rx,ry};
+            double[] velocity = {vx,vy};
+            Vector r = new Vector(position);
+            Vector v = new Vector(velocity);
+            bodies[i] = new Body(r, v, mass);
+        }
+    }
+
     public void update(double dt) {
         Vector[] f = new Vector[numBodies];
         // initialize the forces to zero

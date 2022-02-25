@@ -3,7 +3,7 @@ public class NBodySimulator {
     private int pauseTime;
     private boolean trace;
     private Universe universe;
-    private int numBodies;
+    //private int numBodies;
 
     public NBodySimulator(String fname, double dt, int pauseTime, boolean do_trace){
         this.universe = new Universe(fname);
@@ -24,7 +24,6 @@ public class NBodySimulator {
         int numargs = args.length;
         if ((numargs == 3) || (numargs == 4)) {
             double dt = Double.parseDouble(args[0]);
-            String fname = args[1];
             int pauseTime = Integer.parseInt(args[2]);
             boolean do_trace = false;
             if (args.length == 4) {
