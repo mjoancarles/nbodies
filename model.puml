@@ -24,7 +24,7 @@ class NBodySimulator {
 - trace : boolean
 
 + NBodySimulator (String fname : String, dt : double, pauseTime : int, do_trace : boolean)
-+ drawUniverse()
+- drawUniverse()
 + simulate()
 - createCanvas()
 + {static} main (args : String[])
@@ -48,7 +48,7 @@ class Vector {
 }
 
 Universe *-> "1..*" Body : bodies
-NBodySimulator -> "1" Universe
+NBodySimulator -> "1" Universe : universe
 
 note bottom of NBodySimulator
 // in main() :

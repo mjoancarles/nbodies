@@ -1,0 +1,5 @@
+We used the Code With Me option of JetBrains for everything of this project.
+We are:
+1- Joaquín Flores Ruiz, 1587646
+2- Fèlix Fernández Peñafiel, 1523257
+3- Joan Carles Montero Jiménez, 1587634

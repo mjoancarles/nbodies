@@ -1,11 +1,13 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
+import java.math.*;
 
 public class Universe {
     private double radius;
     private int numBodies;
     private Body[] bodies;
+
     public Universe(String fname) {
         try {
             Scanner in = new Scanner((new FileReader(fname)));
@@ -32,6 +34,7 @@ public class Universe {
     public void update(double dt) {
         Vector[] f = new Vector[numBodies];
         // initialize the forces to zero
+        long start = System.currentTimeMillis();
         for (int i = 0; i < numBodies; i++) {
             f[i] = new Vector(new double[2]);
         }
@@ -47,6 +50,9 @@ public class Universe {
         for (int i = 0; i < numBodies; i++) {
             bodies[i].move(f[i], dt);
         }
+        long finish = System.currentTimeMillis();
+        long elapsedTime = finish - start;
+        System.out.println("Elapsed time " + elapsedTime + " milliseconds");
     }
 
     public Body[] getBodies() {return this.bodies;}

@@ -1,0 +1,12 @@
+We got the following results executing our program:
+
+"Number of bodies" -> "Execution Time"
+With 100 bodies -> 0-1 milliseconds
+With 1.000 bodies -> 40 milliseconds
+With 5.000 bodies -> 1 second
+With 10.000 bodies -> 4,5 seconds
+
+So we can assert that the relation between the time and the number of bodies is not linear, it seems to be a quadratic
+or a similar one because as long as we increase the number of bodies, the executing time increases much faster.
+
+As the program stands, to get a good performance, we would have to use a number of bodies less or equal than 1000.

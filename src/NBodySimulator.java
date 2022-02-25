@@ -3,6 +3,7 @@ public class NBodySimulator {
     private int pauseTime;
     private boolean trace;
     private Universe universe;
+    private int numBodies;
 
     public NBodySimulator(String fname, double dt, int pauseTime, boolean do_trace){
         this.universe = new Universe(fname);
@@ -11,6 +12,12 @@ public class NBodySimulator {
         trace = do_trace;
     }
 
+    public NBodySimulator(int numBodies,double dt, int pauseTime, boolean do_trace){
+        this.universe = new Universe(numBodies);
+        timeStep = dt;
+        this.pauseTime = pauseTime;
+        trace = do_trace;
+    }
 
     public static void main(String[] args) {
         NBodySimulator nbody;
@@ -23,12 +30,19 @@ public class NBodySimulator {
             if (args.length == 4) {
                 do_trace = args[3].toLowerCase().equals("trace");
             }
-            nbody = new NBodySimulator(fname, dt, pauseTime, do_trace);
+            try {
+                int numBodies = Integer.parseInt(args[1]);
+                nbody = new NBodySimulator(numBodies, dt, pauseTime, do_trace);
+            } catch (NumberFormatException e){
+                String fname = args[1];
+                nbody = new NBodySimulator(fname, dt, pauseTime, do_trace);
+            }
             nbody.simulate();
         } else {
             assert false : "invalid number of arguments" ;
         }
     }
+
     public void simulate() {
         createCanvas();
         if (this.trace) {
